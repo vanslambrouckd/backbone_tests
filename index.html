@@ -3,8 +3,44 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Backbone tests</title>
+
 </head>
 <body>
-	
+
+	<script type="text/javascript" src="js/vendor/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+	<script type="text/javascript" src="js//vendor/backbone-1.1.2.min.js"></script>
+	<script>
+		var Todo = Backbone.Model.extend({
+			initialize: function() {
+				console.log('model has been initialized');
+			},
+			defaults: {
+				title: '',
+				completed: false
+			}
+		});
+
+		
+		var todo1 = new Todo();
+		console.log(JSON.stringify(todo1));
+
+		var todo2 = new Todo({
+			title:'learn backbone',
+			completed: false
+		});
+		console.log(todo2);
+
+		console.log(todo2.get('title'));
+		todo2.set('title', 'david');
+
+		var Person = new Backbone.Model();
+		Person.on("change:name", function() {
+			console.log('the name has been changed');
+		});
+
+		Person.set({ name: 'david'});
+		Person.set({ name: 'david'}, { silent: true });
+	</script>	
 </body>
 </html>
